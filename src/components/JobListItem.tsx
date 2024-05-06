@@ -1,6 +1,11 @@
+import { JobItem } from '../lib/types';
 import BookmarkIcon from './BookmarkIcon';
 
-export default function JobListItem({ jobItem }) {
+type JobListItemProps = {
+  jobItem: JobItem;
+};
+
+export default function JobListItem({ jobItem }: JobListItemProps) {
   return (
     <li className="job-item">
       <a className="job-item__link">
