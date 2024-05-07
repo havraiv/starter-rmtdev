@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { JobItem } from './types';
+import { JobItem, JobItemExtended } from './types';
 import { BASE_API_URL } from './constants';
 
 export const useJobItems = (searchText: string) => {
@@ -43,7 +43,7 @@ export const useActiveId = () => {
 };
 
 export const useJobItem = (id: number | null) => {
-  const [jobItem, setJobItem] = useState(null);
+  const [jobItem, setJobItem] = useState<JobItemExtended | null>(null);
 
   useEffect(() => {
     if (!id) return;
