@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { JobItem, JobItemExtended } from './types';
 import { BASE_API_URL } from './constants';
 
-export const useJobItems = (searchText: string) => {
+export const useJobItems = (searchText?: string) => {
   const [jobItems, setJobItems] = useState<JobItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const jobItemsCount = jobItems.length;
 
   const jobItemsSliced = jobItems.slice(0, 7);
 
@@ -19,7 +21,7 @@ export const useJobItems = (searchText: string) => {
     };
     fetchData();
   }, [searchText]);
-  return [jobItemsSliced, isLoading] as const;
+  return [jobItemsSliced, isLoading, jobItemsCount] as const;
 };
 
 export const useActiveId = () => {
