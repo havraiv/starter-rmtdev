@@ -21,7 +21,7 @@ export const useJobItems = (searchText?: string) => {
     };
     fetchData();
   }, [searchText]);
-  return [jobItemsSliced, isLoading, jobItemsCount] as const;
+  return { jobItemsSliced, isLoading, jobItemsCount } as const;
 };
 
 export const useActiveId = () => {
