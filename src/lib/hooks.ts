@@ -64,3 +64,17 @@ export const useJobItem = (id: number | null) => {
 
   return { jobItem, isLoading } as const;
 };
+
+export const useDebounce = (value, time) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedValue(value);
+    }, time);
+
+    return () => clearTimeout(timerId);
+  }, [value, time]);
+
+  return debouncedValue;
+};
