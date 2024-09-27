@@ -65,7 +65,7 @@ export const useJobItem = (id: number | null) => {
   return { jobItem, isLoading } as const;
 };
 
-export const useDebounce = (value, time) => {
+export const useDebounce = <T>(value: T, time = 500): T => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
