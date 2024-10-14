@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
-import { JobItem } from './types';
+import { JobItem, JobItemExtended } from './types';
 import { BASE_API_URL } from './constants';
 import { useQuery } from '@tanstack/react-query';
 
-const fetchJobItem = async (id: number) => {
+interface JobItemApiResponse {
+  public: boolean;
+  jobItem: JobItemExtended;
+}
+
+const fetchJobItem = async (id: number): Promise<JobItemApiResponse> => {
   const response = await fetch(`${BASE_API_URL}/${id}`);
   const data = await response.json();
   return data;
